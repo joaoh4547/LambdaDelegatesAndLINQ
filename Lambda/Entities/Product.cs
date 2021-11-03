@@ -7,13 +7,13 @@ namespace Project01.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
 
         public Product()
         {
         }
 
-        public Product(int id, string name, decimal price)
+        public Product(int id, string name, double price)
         {
             this.Id = id;
             this.Name = name;
