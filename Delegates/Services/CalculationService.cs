@@ -1,6 +1,6 @@
 ﻿namespace Delegates.Services
 {
-    public class CalculationService
+    public static class CalculationService
     {
         public static double Max(double n1, double n2)
         {
