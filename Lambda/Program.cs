@@ -16,7 +16,7 @@ namespace Project01
                 new Product {Id = 2, Name = "Tablet", Price = 800.00}
             };
 
-            products.RemoveAll(x => x.Price >= 100);
+            products.RemoveAll(product => product.Price >= 100);
             
             foreach (var product in products)
             {
