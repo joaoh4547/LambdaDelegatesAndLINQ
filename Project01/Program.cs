@@ -9,16 +9,21 @@ namespace Project01
         public static void Main(string[] args)
         {
             var products = new List<Product>();
-            products.Add(new Product(4,"Tv",900));
-            products.Add(new Product(1,"Notebook",2500));
-            products.Add(new Product(2,"Tablet",800));
-            
-            products.Sort();
-            
+            products.Add(new Product(4, "Tv", 900));
+            products.Add(new Product(1, "Notebook", 2500));
+            products.Add(new Product(2, "Tablet", 800));
+
+            products.Sort(CompareProducts);
+
             foreach (var product in products)
             {
                 Console.WriteLine(product);
             }
+        }
+
+        private static int CompareProducts(Product p1, Product p2)
+        {
+            return p1.Id.CompareTo(p2.Id);
         }
     }
 }

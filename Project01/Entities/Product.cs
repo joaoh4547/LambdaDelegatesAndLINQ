@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Project01.Entities
 {
-    public class Product : IComparable<Product>
+    public class Product 
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -23,7 +23,7 @@ namespace Project01.Entities
 
         public override string ToString()
         {
-            return $"Id: {Id}, Nome: {Name}, Preco: {Price.ToString("C", CultureInfo.GetCultureInfo("pt-br"))} ";
+            return $"Id: {Id}, Nome: {Name}, Preço: {Price.ToString("C", CultureInfo.GetCultureInfo("pt-br"))} ";
         }
 
         public int CompareTo(Product other)
