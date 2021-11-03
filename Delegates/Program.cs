@@ -15,7 +15,7 @@ namespace Delegates
 
         private static void MulticastDelegate()
         {
-            // Sum With Delegate
+            //  Multicast Delegate
             double a = 1, b = 92;
             MultCastBinaryNumericOperation operation = CalculationService.ShowSum;
             operation += CalculationService.ShowMax;
