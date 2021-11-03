@@ -16,8 +16,8 @@ namespace Project01
                 new Product {Id = 2, Name = "Tablet", Price = 800.00}
             };
 
-            products.Sort((p1, p2) => p1.Price.CompareTo(p2.Price));
-
+            products.RemoveAll(x => x.Price >= 100);
+            
             foreach (var product in products)
             {
                 Console.WriteLine(product);
