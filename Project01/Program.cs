@@ -13,7 +13,7 @@ namespace Project01
             products.Add(new Product(1, "Notebook", 2500));
             products.Add(new Product(2, "Tablet", 800));
 
-            products.Sort(CompareProducts);
+            products.Sort((p1, p2) => p1.Price.CompareTo(p2.Price));
 
             foreach (var product in products)
             {
@@ -23,7 +23,7 @@ namespace Project01
 
         private static int CompareProducts(Product p1, Product p2)
         {
-            return p1.Id.CompareTo(p2.Id);
+            return p1.Price.CompareTo(p2.Price);
         }
     }
 }
