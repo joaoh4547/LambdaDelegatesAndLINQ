@@ -73,6 +73,12 @@ namespace LINQ
 
             var r5 = r4.Skip(2).Take(4);
             Print("Tier 1 order by price then by name skip 2 take 4",r5);
+
+            var r6 = products.First();
+            Console.WriteLine($"First -> {r6}");
+
+            var r7 = products.Where(p => p.Price > 3000).FirstOrDefault();
+            
         }
 
         private static void Print<T>(string message, IEnumerable<T> collection)
