@@ -46,10 +46,11 @@ namespace LINQ
                 new Product {Id = 4, Name = "Notebook", Price = 1300, Category = c2},
                 new Product {Id = 5, Name = "Saw", Price = 80, Category = c1},
                 new Product {Id = 6, Name = "Tablet", Price = 700, Category = c2},
+                new Product {Id = 10, Name = "Sound Bar", Price = 700, Category = c3},
                 new Product {Id = 7, Name = "Camera", Price = 700, Category = c3},
                 new Product {Id = 8, Name = "Printer", Price = 350, Category = c3},
                 new Product {Id = 9, Name = "MacBook", Price = 1800, Category = c2},
-                new Product {Id = 10, Name = "Sound Bar", Price = 700, Category = c3},
+                
                 new Product {Id = 11, Name = "Level", Price = 70.0, Category = c1}
             };
 
@@ -69,6 +70,9 @@ namespace LINQ
                 .ThenBy(p => p.Name)
                 .ToList();
             Print("Tier 1 order by price then by name",r4);
+
+            var r5 = r4.Skip(2).Take(4);
+            Print("Tier 1 order by price then by name skip 2 take 4",r5);
         }
 
         private static void Print<T>(string message, IEnumerable<T> collection)
