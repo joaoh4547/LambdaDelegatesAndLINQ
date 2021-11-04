@@ -78,7 +78,10 @@ namespace LINQ
             Console.WriteLine($"First -> {r6}");
 
             var r7 = products.Where(p => p.Price > 3000).FirstOrDefault();
-            
+
+            var r8 = products.Where(p => p.Id == 3).SingleOrDefault();
+            Console.WriteLine($"Single -> {r8}");   
+
         }
 
         private static void Print<T>(string message, IEnumerable<T> collection)
