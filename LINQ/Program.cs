@@ -100,6 +100,9 @@ namespace LINQ
 
             var r14 = products.Where(p => p.Category.Id == 5).Select(p => p.Price).DefaultIfEmpty(0.0).Average();
             Console.WriteLine(r14);
+
+            var r15 = products.Where(p => p.Category.Id == 1).Select(p => p.Price).Aggregate(0.0, (x, y) => x + y);
+            Console.WriteLine($"Category 1 aggregate sum {r15}");
         }
 
         private static void Print<T>(string message, IEnumerable<T> collection)
