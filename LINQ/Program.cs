@@ -158,7 +158,7 @@ namespace LINQ
             var r5 = (from p in r4 select p).Skip(2).Take(4);
                 Print("Tier 1 Order by Price then by name SKIP 2 Take 4",r5);
         }
-
+    
         private static void Print<T>(string message, IEnumerable<T> collection)
         {
             Console.WriteLine(message);
