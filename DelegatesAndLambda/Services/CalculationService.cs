@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Delegates.Services
+namespace DelegatesAndLambda.Services
 {
     public static class CalculationService
     {

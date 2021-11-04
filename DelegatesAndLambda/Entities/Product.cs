@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Project01.Entities
+namespace DelegatesAndLambda.Entities
 {
     public class Product 
     {
