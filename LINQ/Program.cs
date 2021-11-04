@@ -9,7 +9,7 @@ namespace LINQ
     {
         public static void Main(string[] args)
         {
-            V2();
+            V3();
         }
 
         private static void V1()
@@ -105,7 +105,7 @@ namespace LINQ
             Console.WriteLine($"Category 1 aggregate sum {r15}");
             Console.WriteLine();
             var r16 = products.GroupBy(p => p.Category);
-            
+
             foreach (var group in r16)
             {
                 Console.WriteLine($"Category -> {group.Key.Name}:");
@@ -116,6 +116,47 @@ namespace LINQ
 
                 Console.WriteLine("------------------");
             }
+        }
+
+        private static void V3()
+        {
+            var c1 = new Category {Id = 1, Name = "Tools", Tier = 2};
+            var c2 = new Category {Id = 2, Name = "Computers", Tier = 1};
+            var c3 = new Category {Id = 3, Name = "Electronics", Tier = 1};
+
+            var products = new List<Product>()
+            {
+                new Product {Id = 1, Name = "Computer", Price = 1100.58, Category = c2},
+                new Product {Id = 2, Name = "Hammer", Price = 90.00, Category = c1},
+                new Product {Id = 3, Name = "Tv", Price = 1700, Category = c3},
+                new Product {Id = 4, Name = "Notebook", Price = 1300, Category = c2},
+                new Product {Id = 5, Name = "Saw", Price = 80, Category = c1},
+                new Product {Id = 6, Name = "Tablet", Price = 700, Category = c2},
+                new Product {Id = 10, Name = "Sound Bar", Price = 700, Category = c3},
+                new Product {Id = 7, Name = "Camera", Price = 700, Category = c3},
+                new Product {Id = 8, Name = "Printer", Price = 350, Category = c3},
+                new Product {Id = 9, Name = "MacBook", Price = 1800, Category = c2},
+
+                new Product {Id = 11, Name = "Level", Price = 70.0, Category = c1}
+            };
+
+            var r1 = from p in products where p.Category.Tier == 1 & p.Price < 900 select p;
+            Print("Tier 1 and price < 900", r1);
+
+            var r2 = from p in products where p.Category.Name == "Tools" select p.Name;
+            Print("Name Of Products", r2);
+
+            var r3 = from p in products
+                where p.Name.StartsWith("C")
+                select new {p.Name, p.Price, CategoryName = p.Category.Name};
+
+            Print("Names Starts With 'C'", r3);
+
+            var r4 = from p in products where p.Category.Tier == 1 orderby p.Name orderby p.Price select p;
+            Print("Tier 1 Order by Price then by name ", r4);
+
+            var r5 = (from p in r4 select p).Skip(2).Take(4);
+                Print("Tier 1 Order by Price then by name SKIP 2 Take 4",r5);
         }
 
         private static void Print<T>(string message, IEnumerable<T> collection)
