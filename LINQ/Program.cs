@@ -53,13 +53,24 @@ namespace LINQ
                 new Product {Id = 11, Name = "Level", Price = 70.0, Category = c1}
             };
 
-           var r1 = products.Where(p => p.Category.Tier == 1 && p.Price < 900).ToList();
-           Print("Tier 1 and price < 900",r1);
+            var r1 = products.Where(p => p.Category.Tier == 1 && p.Price < 900).ToList();
+            Print("Tier 1 and price < 900", r1);
 
-           var r2 = products.Where(p => p.Category.Name == "Tools").Select(p => p.Name).ToList();
-           Print("Name of Products From Tools",r2);
+            var r2 = products.Where(p => p.Category.Name == "Tools").Select(p => p.Name).ToList();
+            Print("Name of Products From Tools", r2);
+
+            var r3 = products.Where(p => p.Name.StartsWith("C")).Select(p =>
+                new {p.Name, p.Price, CategoryName = p.Category.Name});
+
+            Print("products starting with the letter c", r3);
+
+            var r4 = products.Where(p => p.Category.Tier == 1)
+                .OrderBy(p => p.Price)
+                .ThenBy(p => p.Name)
+                .ToList();
+            Print("Tier 1 order by price then by name",r4);
         }
-    
+
         private static void Print<T>(string message, IEnumerable<T> collection)
         {
             Console.WriteLine(message);
@@ -67,6 +78,7 @@ namespace LINQ
             {
                 Console.WriteLine(i);
             }
+
             Console.WriteLine();
         }
     }
