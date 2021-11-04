@@ -53,10 +53,21 @@ namespace LINQ
                 new Product {Id = 11, Name = "Level", Price = 70.0, Category = c1}
             };
 
-            foreach (var product in products)
+           var r1 = products.Where(p => p.Category.Tier == 1 && p.Price < 900).ToList();
+           Print("Tier 1 and price < 900",r1);
+
+           var r2 = products.Where(p => p.Category.Name == "Tools").Select(p => p.Name).ToList();
+           Print("Name of Products From Tools",r2);
+        }
+    
+        private static void Print<T>(string message, IEnumerable<T> collection)
+        {
+            Console.WriteLine(message);
+            foreach (var i in collection)
             {
-                Console.WriteLine(product);
+                Console.WriteLine(i);
             }
+            Console.WriteLine();
         }
     }
 }

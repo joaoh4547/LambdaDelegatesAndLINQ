@@ -12,7 +12,10 @@ namespace LINQ.Entities
         public override string ToString()
         {
             return
-                $"Id: {Id}, Nome:{Name} Preço: {Price.ToString("C", CultureInfo.GetCultureInfo("pt-br"))}, Categoria: {Category.Name}";
+                $"Id: {Id}," +
+                $" Nome:{Name}" +
+                $" Preço: {Price.ToString("C", CultureInfo.GetCultureInfo("pt-br"))}," +
+                $" Categoria: {Category.Name} - {Category.Tier}";
         }
     }
 }   
