@@ -50,7 +50,7 @@ namespace LINQ
                 new Product {Id = 7, Name = "Camera", Price = 700, Category = c3},
                 new Product {Id = 8, Name = "Printer", Price = 350, Category = c3},
                 new Product {Id = 9, Name = "MacBook", Price = 1800, Category = c2},
-                
+
                 new Product {Id = 11, Name = "Level", Price = 70.0, Category = c1}
             };
 
@@ -69,19 +69,37 @@ namespace LINQ
                 .OrderBy(p => p.Price)
                 .ThenBy(p => p.Name)
                 .ToList();
-            Print("Tier 1 order by price then by name",r4);
+            Print("Tier 1 order by price then by name", r4);
 
             var r5 = r4.Skip(2).Take(4);
-            Print("Tier 1 order by price then by name skip 2 take 4",r5);
+            Print("Tier 1 order by price then by name skip 2 take 4", r5);
 
             var r6 = products.First();
             Console.WriteLine($"First -> {r6}");
 
             var r7 = products.Where(p => p.Price > 3000).FirstOrDefault();
 
-            var r8 = products.Where(p => p.Id == 3).SingleOrDefault();
-            Console.WriteLine($"Single -> {r8}");   
 
+            var r8 = products.Where(p => p.Id == 3).Single();
+            Console.WriteLine($"Single -> {r8}");
+            var r9 = products.Where(p => p.Id == 32).SingleOrDefault();
+            Console.WriteLine($"Single Or Default -> {r9}");
+            Console.WriteLine();
+
+
+            var r10 = products.Max(p => p.Price);
+            Console.WriteLine($"Max Price : {r10}");
+            var r11 = products.Min(p => p.Price);
+            Console.WriteLine($"Min Price : {r11}");
+
+            var r12 = products.Where(p => p.Category.Id == 1).Sum(p => p.Price);
+            Console.WriteLine($"Category 1 Sum Prices : {r12}");
+
+            var r13 = products.Where(p => p.Category.Id == 1).Average(p => p.Price);
+            Console.WriteLine($"Category 1 Average prices : {r13}");
+
+            var r14 = products.Where(p => p.Category.Id == 5).Select(p => p.Price).DefaultIfEmpty(0.0).Average();
+            Console.WriteLine(r14);
         }
 
         private static void Print<T>(string message, IEnumerable<T> collection)
